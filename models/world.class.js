@@ -1,18 +1,23 @@
 class World {
     character = new Character();
+
     enemies = [
         new Pufferfish(),
         new Pufferfish(),
         new Pufferfish(),
         new Jellyfish()
     ];
-    barrier = [
-        new Barrier(),
-        new Barrier(),
-        new Barrier()
-    ]; 
-    light = new Light();
-    floor = new Floor();
+
+    barrier = new Barrier();
+
+    backgroundObjects = [
+        new BackgroundObject('../assets/3. Background/Layers/5. Water/D.png', 0, 0, 300, 150),
+        new BackgroundObject('../assets/3. Background/Layers/1. Light/COMPLETO.png', 0, 0, 300, 150),
+        new BackgroundObject('../assets/3. Background/Layers/4.Fondo 2/D.png', 0, 0, 300, 150),
+        new BackgroundObject('../assets/3. Background/Layers/3.Fondo 1/D.png', 0, 0, 300, 150),
+        new BackgroundObject('../assets/3. Background/Layers/2. Floor/D.png', 0, 0, 300, 150)
+    ];
+
     canvas;
     ctx;
 
@@ -25,32 +30,32 @@ class World {
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.ctx.drawImage(
-            this.floor.img,
-            this.floor.x, this.floor.y,
-            this.floor.width, this.floor.height);
 
-        this.ctx.drawImage(
-            this.barrier.img,
-            this.barrier.x, this.barrier.y,
-            this.barrier.width, this.barrier.height);
-        
-        this.ctx.drawImage(
-            this.light.img,
-            this.light.x, this.light.y,
-            this.light.width, this.light.height);
-        this.ctx.drawImage(
-            this.character.img,
-            this.character.x, this.character.y,
-            this.character.width, this.character.height);
-        this.enemies.forEach(enemy => {
-            this.ctx.drawImage(
-                enemy.img,
-                enemy.x, enemy.y,
-                enemy.width, enemy.height);
-        });
+        this.addObjectsToMap(this.backgroundObjects);
+
+        this.addToMap(this.character);
+        this.addObjectsToMap(this.enemies);
+
+        /*
+            this.addToMap(this.barrier);
+        */
 
         let self = this;
         requestAnimationFrame(() => { self.draw() });
     }
+
+    addObjectsToMap(movableObjects) {
+        movableObjects.forEach(movableObject => {
+            this.addToMap(movableObject);
+        });
+    }
+
+    addToMap(movableObject) {
+        this.ctx.drawImage(
+            movableObject.img,
+            movableObject.x, movableObject.y,
+            movableObject.width, movableObject.height);
+    }
+
+
 }
