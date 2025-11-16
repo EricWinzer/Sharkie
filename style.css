@@ -1,3 +1,9 @@
+:root {
+    --canvas-width: 720px;
+    --canvas-height: 480px;
+}
+
+
 * {
     box-sizing: border-box;
 }
@@ -8,7 +14,7 @@ body {
 }
 
 canvas {
-    width: 720px;
-    height: 480px;
+    width: var(--canvas-width);
+    height: var(--canvas-height);
     background-color: black;
 }
