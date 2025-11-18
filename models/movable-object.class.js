@@ -4,7 +4,8 @@ class MovableObjects {
     img;
     height = 50;
     width = 80;
-    imageCache = [];
+    imageCache = {};
+    speed = 0.15;
 
     currentImage = 0;
 
@@ -14,7 +15,7 @@ class MovableObjects {
     }
 
     loadImages(arr) {
-        arr.forEach(path => {
+        arr.forEach((path) => {
             let img = new Image();
             img.src = path;
             this.imageCache[path] = img;
@@ -27,7 +28,9 @@ class MovableObjects {
     }
 
     moveLeft() {
-        console.log('Moving left');
+        setInterval(() => {
+            this.x -= this.speed;
+        }, 1000 / 60);
     }
 
     animate() {

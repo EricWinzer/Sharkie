@@ -19,12 +19,18 @@ class World {
 
     canvas;
     ctx;
+    keyboard;
 
-    constructor(canvas) {
+    constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
+        this.keyboard = keyboard;
         this.draw();
+        this.setWorld();
+    }
 
+    setWorld() {
+        this.character.world = this;
     }
 
     draw() {
@@ -50,11 +56,14 @@ class World {
     }
 
     addToMap(movableObject) {
+        if (!movableObject.img) {
+            console.error("Bild fehlt:", movableObject);
+            return;
+        }
         this.ctx.drawImage(
             movableObject.img,
             movableObject.x, movableObject.y,
             movableObject.width, movableObject.height);
     }
-
 
 }
