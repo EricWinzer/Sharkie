@@ -5,7 +5,6 @@ class World {
         new Pufferfish(),
         new Pufferfish(),
         new Pufferfish(),
-        new Jellyfish()
     ];
 
     barrier = new Barrier();
