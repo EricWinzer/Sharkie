@@ -1,6 +1,6 @@
 class Character extends MovableObjects {
 
-    x = -20;
+    x = 100;
     y = 50;
     height = 100;
     width = 160;
@@ -26,13 +26,16 @@ class Character extends MovableObjects {
     animate() {
 
         setInterval(() => {
-            if (keyboard.right == true) {
+            if (keyboard.right == true && this.x < this.world.level.level_end_x) {
                 this.x += this.speed;
+                this.otherDirection = false;
             }
 
-            if (keyboard.left == true) {
+            if (keyboard.left == true && this.x > 0) {
                 this.x -= this.speed;
+                this.otherDirection = true;
             }
+            this.world.camera_x = -this.x + 100;
         }, 1000 / 60);
 
 
@@ -43,7 +46,7 @@ class Character extends MovableObjects {
                 this.img = this.imageCache[path];
                 this.currentImage++;
             }
-        }, 1000 / 60);
+        }, 50);
     }
 
     jump() {

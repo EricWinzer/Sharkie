@@ -1,25 +1,11 @@
 class World {
     character = new Character();
-
-    enemies = [
-        new Pufferfish(),
-        new Pufferfish(),
-        new Pufferfish(),
-    ];
-
-    barrier = new Barrier();
-
-    backgroundObjects = [
-        new BackgroundObject('../assets/3. Background/Layers/5. Water/D.png', 0, 0, 300, 150),
-        new BackgroundObject('../assets/3. Background/Layers/1. Light/COMPLETO.png', 0, 0, 300, 150),
-        new BackgroundObject('../assets/3. Background/Layers/4.Fondo 2/D.png', 0, 0, 300, 150),
-        new BackgroundObject('../assets/3. Background/Layers/3.Fondo 1/D.png', 0, 0, 300, 150),
-        new BackgroundObject('../assets/3. Background/Layers/2. Floor/D.png', 0, 0, 300, 150)
-    ];
+    level = level1;
 
     canvas;
     ctx;
     keyboard;
+    camera_x = 0;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -36,11 +22,15 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        this.addObjectsToMap(this.backgroundObjects);
+        this.ctx.translate(this.camera_x, 0);
+
+        this.addObjectsToMap(this.level.backgroundObjects);
 
         this.addToMap(this.character);
-        this.addObjectsToMap(this.enemies);
+        this.addObjectsToMap(this.level.enemies);
 
+
+        this.ctx.translate(-this.camera_x, 0);
         /*
             this.addToMap(this.barrier);
         */
@@ -56,14 +46,31 @@ class World {
     }
 
     addToMap(movableObject) {
-        if (!movableObject.img) {
-            console.error("Bild fehlt:", movableObject);
-            return;
+        if (movableObject.otherDirection) {
+            this.flipImage(movableObject);
         }
+
         this.ctx.drawImage(
             movableObject.img,
             movableObject.x, movableObject.y,
             movableObject.width, movableObject.height);
+
+        if (movableObject.otherDirection) {
+            this.flipImageBack(movableObject);
+        }
+
+    }
+
+    flipImage(movableObject) {
+        this.ctx.save();
+        this.ctx.translate(movableObject.width, 0);
+        this.ctx.scale(-1, 1);
+        movableObject.x = movableObject.x * -1;
+    }
+
+    flipImageBack(movableObject) {
+        movableObject.x = movableObject.x * -1;
+        this.ctx.restore();
     }
 
 }
