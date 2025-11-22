@@ -7,6 +7,8 @@ class World {
     keyboard;
     camera_x = 0;
 
+    intervalsIDs = [];
+
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
@@ -71,6 +73,17 @@ class World {
     flipImageBack(movableObject) {
         movableObject.x = movableObject.x * -1;
         this.ctx.restore();
+    }
+
+setStoppableInterval(func, time) {
+        let interval = setInterval(func, time);
+        this.intervalsIDs.push(interval);
+    }
+
+stopGame() {
+        this.intervalsIDs.forEach(intervalID => {
+            clearInterval(intervalID);
+        });
     }
 
 }
