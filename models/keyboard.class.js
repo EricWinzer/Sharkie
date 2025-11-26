@@ -6,7 +6,7 @@ down = false;
 space = false; 
 
     constructor() {
-        window.addEventListener('keypressed', (e) => this.keyDownHandler(e));
+        window.addEventListener('keydown', (e) => this.keyDownHandler(e));
     }
 
 

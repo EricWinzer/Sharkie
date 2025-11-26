@@ -1,4 +1,4 @@
-class Jellyfish extends MovableObjects {
+class Jellyfish extends MovableObject {
     y = 55;
 
     constructor() {

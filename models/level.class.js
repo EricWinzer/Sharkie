@@ -1,7 +1,7 @@
 class Level {
     enemies;
-    backgroundObjects
-    level_end_x = 720;
+    backgroundObjects;
+    level_end_x = 3 * 719;
 
     barrier;
 

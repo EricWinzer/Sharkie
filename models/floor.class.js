@@ -1,4 +1,4 @@
-class Floor extends MovableObjects {
+class Floor extends MovableObject {
         x = 0;
         y = 0;
         height = 150;

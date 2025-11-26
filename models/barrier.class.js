@@ -1,4 +1,4 @@
-class Barrier extends MovableObjects {
+class Barrier extends DrawableObject {
         x = 0;
         y = 0;
         height = 150;
