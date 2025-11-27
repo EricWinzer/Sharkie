@@ -69,7 +69,9 @@ class Endboss extends MovableObject {
     }
 
     animate() {
-        setStoppableInterval(this.playAnimation(this.imagesSwim), 1000 / 60);
+        setInterval(() => {
+            this.playAnimation(this.imagesSwim)
+        }, 1000 / 60);
     }
 
 }

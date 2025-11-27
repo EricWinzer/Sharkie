@@ -15,10 +15,22 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
+        this.checkCollisions();
     }
 
     setWorld() {
         this.character.world = this;
+    }
+
+    checkCollisions() {
+        setStoppableInterval(() => {
+            this.level.enemies.forEach((enemy) => {
+                if (this.character.isColliding(enemy)) {
+                    this.character.hit();
+                    console.log('Collision with Character', enemy);
+                }
+            })
+        }, 1000);
     }
 
     draw() {
@@ -48,10 +60,8 @@ class World {
             this.flipImage(movableObject);
         }
 
-        this.ctx.drawImage(
-            movableObject.img,
-            movableObject.x, movableObject.y,
-            movableObject.width, movableObject.height);
+        movableObject.draw(this.ctx);
+        movableObject.drawFrame(this.ctx);
 
         if (movableObject.otherDirection) {
             this.flipImageBack(movableObject);
@@ -71,9 +81,11 @@ class World {
         this.ctx.restore();
     }
 
+
     setStoppableInterval(func, time) {
         let interval = setInterval(func, time);
         this.intervalsIDs.push(interval);
+        console.log(this.intervalsIDs);
     }
 
     stopGame() {

@@ -135,37 +135,68 @@ class Character extends MovableObject {
         super();
         this.loadImage(this.imagesIdle[0]);
         this.loadImages(this.imagesSwim);
+        this.loadImages(this.imagesBubbleAttack);
+        this.loadImages(this.imagesFinAttack);
+        this.loadImages(this.imagesWhaleBubbleAttack);
+        this.loadImages(this.imagesIdle);
+        this.loadImages(this.imagesLongIdle);
+        this.loadImages(this.imagesHurtElectrificed);
+        this.loadImages(this.imagesHurtPoisened);
+        this.loadImages(this.imagesDeadElectrificed);
+        this.loadImages(this.imagesDeadPoisened);
 
+        /*         this.applyGravity(); */
         this.animate();
     }
 
     animate() {
 
-        setInterval(() => {
+        setStoppableInterval(() => {
             if (keyboard.right == true && this.x < this.world.level.level_end_x) {
-                this.x += this.speed;
+                this.moveRight();
                 this.otherDirection = false;
+                //FIXME - Sound einfügen
+                // this.swimmingSound.play();
             }
 
             if (keyboard.left == true && this.x > 0) {
-                this.x -= this.speed;
+                this.moveLeft();
                 this.otherDirection = true;
+                //FIXME - Sound einfügen
+                // this.swimmingSound.play();
             }
 
-            if (keyboard.space == true && !this.isAboveGround()) {
-                this.speedY = 20;
+            if (keyboard.up == true && this.y > 0) {
+                this.moveUp();
+                this.otherDirection = false;
+                //FIXME - Sound einfügen
+                // this.swimmingSound.play();
+            }
+
+            if (keyboard.down == true && !this.isAboveGround()) {
+                this.moveDown();
+                this.otherDirection = false;
+                //FIXME - Sound einfügen
+                // this.swimmingSound.play();
             }
 
             this.world.camera_x = -this.x + 20;
-        }, 1000 / 60);
+        }, 1000); // 1000 / 60);
 
 
-        setInterval(() => {
-            if (keyboard.right || keyboard.left == true) {
-                this.playAnimation(this.imagesSwim);
+        setStoppableInterval(() => {
+            if (this.isDead()) {
+                this.playAnimation(this.imagesDeadElectrificed);
+            } else if (this.keyboard.space == true) {
+                this.playAnimation(this.imagesBubbleAttack);
+            } else {
+                if (keyboard.right || keyboard.left == true) {
+                    this.playAnimation(this.imagesSwim);
+                }
             }
-        }, 50);
+        }, 1000); // 50);
     }
+
 
     bubbleAttack() {
 
