@@ -1,4 +1,5 @@
 class Statusbar {
+    percentage = 100;
 
     imageStatusbarLives = [
         '../assets/4. Marcadores/green/Life/0_  copia 3.png',
@@ -27,13 +28,10 @@ class Statusbar {
         '../assets/4. Marcadores/green/Poisoned/100_ copia 3.png',
     ];
 
-    percentage = 100;
-
     constructor() {
         this.loadImages(this.imageStatusbarLives);
         this.loadImages(this.imageStatusbarCoins);
         this.loadImages(this.imageStatusbarPoisoned);
-
     }
 
     setPercentageLives(percentage) {
@@ -44,7 +42,7 @@ class Statusbar {
 
     resolveImageIndex() {
         switch (true) {
-            case this.percentage = 100:
+            case this.percentage == 100:
                 return 5;
             case this.percentage >= 80:
                 return 4;
@@ -57,7 +55,5 @@ class Statusbar {
             default:
                 return 0;
         }
-
-
     }
 }

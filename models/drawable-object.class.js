@@ -1,4 +1,4 @@
-class DrawableObject extends World {
+class DrawableObjects {
     ground = 400;
     img;
     x;
@@ -6,12 +6,12 @@ class DrawableObject extends World {
     height;
     width;
     imageCache = {};
+    currentImage = 0;
+    flipDirection = false;
 
     isAboveGround() {
-        return this.y < ground;
+        return this.y < this.ground;
     }
-
-    currentImage = 0;
 
     loadImage(path) {
         this.img = new Image();
@@ -24,12 +24,21 @@ class DrawableObject extends World {
             img.src = path;
             img.style = 'transform: scaleX(-1)';
             this.imageCache[path] = img;
-
         });
     }
 
-draw(ctx) {
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-    }
+    draw(ctx) {
+        ctx.save();
 
+        // Spiegelung aktiv?
+        if (this.flipX) {
+            ctx.translate(this.x + this.width, 0);
+            ctx.scale(-1, 1);
+            ctx.drawImage(this.img, 0, this.y, this.width, this.height);
+        } else {
+            ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+        }
+
+        ctx.restore();
+    }
 }

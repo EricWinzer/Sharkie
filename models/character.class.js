@@ -1,5 +1,4 @@
-class Character extends MovableObject {
-
+class Character extends MovableObjects {
     x = 30;
     y = 240;
     height = 100;
@@ -13,18 +12,7 @@ class Character extends MovableObject {
         '../assets/1.Sharkie/3.Swim/3.png',
         '../assets/1.Sharkie/3.Swim/4.png',
         '../assets/1.Sharkie/3.Swim/5.png',
-        '../assets/1.Sharkie/3.Swim/6.png'
-    ];
-
-    imagesBubbleAttack = [
-        '../assets/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/1.png',
-        '../assets/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/2.png',
-        '../assets/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/3.png',
-        '../assets/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/4.png',
-        '../assets/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/5.png',
-        '../assets/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/6.png',
-        '../assets/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/7.png',
-        '../assets/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/8.png'
+        '../assets/1.Sharkie/3.Swim/6.png',
     ];
 
     imagesFinAttack = [
@@ -35,7 +23,18 @@ class Character extends MovableObject {
         '../assets/1.Sharkie/4.Attack/Fin slap/5.png',
         '../assets/1.Sharkie/4.Attack/Fin slap/6.png',
         '../assets/1.Sharkie/4.Attack/Fin slap/7.png',
-        '../assets/1.Sharkie/4.Attack/Fin slap/8.png'
+        '../assets/1.Sharkie/4.Attack/Fin slap/8.png',
+    ];
+
+    imagesBubbleAttack = [
+        '../assets/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/1.png',
+        '../assets/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/2.png',
+        '../assets/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/3.png',
+        '../assets/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/4.png',
+        '../assets/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/5.png',
+        '../assets/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/6.png',
+        '../assets/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/7.png',
+        '../assets/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/8.png',
     ];
 
     imagesWhaleBubbleAttack = [
@@ -46,7 +45,7 @@ class Character extends MovableObject {
         '../assets/1.Sharkie/4.Attack/Bubble trap/For Whale/5.png',
         '../assets/1.Sharkie/4.Attack/Bubble trap/For Whale/6.png',
         '../assets/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png',
-        '../assets/1.Sharkie/4.Attack/Bubble trap/For Whale/8.png'
+        '../assets/1.Sharkie/4.Attack/Bubble trap/For Whale/8.png',
     ];
 
     imagesIdle = [
@@ -67,7 +66,7 @@ class Character extends MovableObject {
         '../assets/1.Sharkie/1.IDLE/15.png',
         '../assets/1.Sharkie/1.IDLE/16.png',
         '../assets/1.Sharkie/1.IDLE/17.png',
-        '../assets/1.Sharkie/1.IDLE/18.png'
+        '../assets/1.Sharkie/1.IDLE/18.png',
     ];
 
     imagesLongIdle = [
@@ -84,13 +83,13 @@ class Character extends MovableObject {
         '../assets/1.Sharkie/2.Long_IDLE/I11.png',
         '../assets/1.Sharkie/2.Long_IDLE/I12.png',
         '../assets/1.Sharkie/2.Long_IDLE/I13.png',
-        '../assets/1.Sharkie/2.Long_IDLE/I14.png'
+        '../assets/1.Sharkie/2.Long_IDLE/I14.png',
     ];
 
     imagesHurtElectrificed = [
         '../assets/1.Sharkie/5.Hurt/2.Electric shock/1.png',
         '../assets/1.Sharkie/5.Hurt/2.Electric shock/1.png',
-        '../assets/1.Sharkie/5.Hurt/2.Electric shock/3.png'
+        '../assets/1.Sharkie/5.Hurt/2.Electric shock/3.png',
     ];
 
     imagesHurtPoisened = [
@@ -98,9 +97,8 @@ class Character extends MovableObject {
         '../assets/1.Sharkie/5.Hurt/1.Poisoned/2.png',
         '../assets/1.Sharkie/5.Hurt/1.Poisoned/3.png',
         '../assets/1.Sharkie/5.Hurt/1.Poisoned/4.png',
-        '../assets/1.Sharkie/5.Hurt/1.Poisoned/5.png'
+        '../assets/1.Sharkie/5.Hurt/1.Poisoned/5.png',
     ];
-
 
     imagesDeadElectrificed = [
         '../assets/1.Sharkie/6.dead/2.Electro_shock/1.png',
@@ -112,7 +110,7 @@ class Character extends MovableObject {
         '../assets/1.Sharkie/6.dead/2.Electro_shock/7.png',
         '../assets/1.Sharkie/6.dead/2.Electro_shock/8.png',
         '../assets/1.Sharkie/6.dead/2.Electro_shock/9.png',
-        '../assets/1.Sharkie/6.dead/2.Electro_shock/10.png'
+        '../assets/1.Sharkie/6.dead/2.Electro_shock/10.png',
     ];
 
     imagesDeadPoisened = [
@@ -127,9 +125,8 @@ class Character extends MovableObject {
         '../assets/1.Sharkie/6.dead/1.Poisoned/9.png',
         '../assets/1.Sharkie/6.dead/1.Poisoned/10.png',
         '../assets/1.Sharkie/6.dead/1.Poisoned/11.png',
-        '../assets/1.Sharkie/6.dead/1.Poisoned/12.png'
+        '../assets/1.Sharkie/6.dead/1.Poisoned/12.png',
     ];
-
 
     constructor() {
         super();
@@ -145,25 +142,21 @@ class Character extends MovableObject {
         this.loadImages(this.imagesDeadElectrificed);
         this.loadImages(this.imagesDeadPoisened);
 
-        /*         this.applyGravity(); */
         this.animate();
     }
 
     animate() {
-
-        setStoppableInterval(() => {
+        setInterval(() => {
             if (keyboard.right == true && this.x < this.world.level.level_end_x) {
                 this.moveRight();
                 this.otherDirection = false;
-                //FIXME - Sound einfügen
-                // this.swimmingSound.play();
+                //FIXME - this.swimmingSound.play();
             }
 
             if (keyboard.left == true && this.x > 0) {
-                this.moveLeft();
+                this.x -= this.speed;
                 this.otherDirection = true;
-                //FIXME - Sound einfügen
-                // this.swimmingSound.play();
+                //FIXME - this.swimmingSound.play();
             }
 
             if (keyboard.up == true && this.y > 0) {
@@ -180,29 +173,27 @@ class Character extends MovableObject {
                 // this.swimmingSound.play();
             }
 
+            if (keyboard.space == true && !this.isAboveGround()) {
+                this.speedY = 20;
+            }
+
             this.world.camera_x = -this.x + 20;
-        }, 1000); // 1000 / 60);
+        }, 1000 / 60);
 
-
-        setStoppableInterval(() => {
+        setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.imagesDeadElectrificed);
-            } else if (this.keyboard.space == true) {
+            } else if (keyboard.space == true) {
                 this.playAnimation(this.imagesBubbleAttack);
             } else {
                 if (keyboard.right || keyboard.left == true) {
                     this.playAnimation(this.imagesSwim);
                 }
             }
-        }, 1000); // 50);
+        }, 50);
     }
 
+    bubbleAttack() {}
 
-    bubbleAttack() {
-
-    }
-
-    finAttack() {
-
-    }
+    finAttack() {}
 }

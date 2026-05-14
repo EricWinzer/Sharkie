@@ -1,4 +1,4 @@
-class MovableObject extends DrawableObject {
+class MovableObjects extends DrawableObjects {
     x = 30;
     y = 75;
     height = 50;
@@ -17,8 +17,8 @@ class MovableObject extends DrawableObject {
     drawFrame(ctx) {
         if (this instanceof Character || this instanceof Pufferfish) {
             ctx.beginPath();
-            ctx.lineWidth = "4";
-            ctx.strokeStyle = "blue";
+            ctx.lineWidth = '4';
+            ctx.strokeStyle = 'blue';
             ctx.rect(this.x, this.y, this.width, this.height);
             ctx.stroke();
         }
@@ -50,10 +50,12 @@ class MovableObject extends DrawableObject {
     }
 
     isColliding(movableObject) {
-        return this.x + this.width > movableObject.x &&
+        return (
+            this.x + this.width > movableObject.x &&
             this.y + this.height > movableObject.y &&
             this.x < movableObject.x &&
-            this.y < movableObject.y + movableObject.height;
+            this.y < movableObject.y + movableObject.height
+        );
     }
 
     hit() {
@@ -77,7 +79,7 @@ class MovableObject extends DrawableObject {
 
     animate() {
         setInterval(() => {
-            this.x -= this.speed;
+            this.x -= 0.15;
         }, 1000 / 60);
     }
 

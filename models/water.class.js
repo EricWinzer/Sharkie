@@ -1,4 +1,4 @@
-class Water extends MovableObject {
+class Water extends MovableObjects {
         x = 0;
         y = 0;
         height = 480;

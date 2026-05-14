@@ -23,34 +23,39 @@ class World {
     }
 
     checkCollisions() {
-        setStoppableInterval(() => {
+        setInterval(() => {
             this.level.enemies.forEach((enemy) => {
                 if (this.character.isColliding(enemy)) {
                     this.character.hit();
                     console.log('Collision with Character', enemy);
                 }
-            })
+            });
         }, 1000);
     }
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
+        this.ctx.translate(this.camera_x, 0);
+
         this.addObjectsToMap(this.level.backgroundObjects);
 
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
 
+        this.ctx.translate(-this.camera_x, 0);
         /*
             this.addToMap(this.barrier);
         */
 
         let self = this;
-        requestAnimationFrame(() => { self.draw() });
+        requestAnimationFrame(() => {
+            self.draw();
+        });
     }
 
     addObjectsToMap(movableObjects) {
-        movableObjects.forEach(movableObject => {
+        movableObjects.forEach((movableObject) => {
             this.addToMap(movableObject);
         });
     }
@@ -60,13 +65,11 @@ class World {
             this.flipImage(movableObject);
         }
 
-        movableObject.draw(this.ctx);
-        movableObject.drawFrame(this.ctx);
+        this.ctx.drawImage(movableObject.img, movableObject.x, movableObject.y, movableObject.width, movableObject.height);
 
         if (movableObject.otherDirection) {
             this.flipImageBack(movableObject);
         }
-
     }
 
     flipImage(movableObject) {
@@ -81,17 +84,14 @@ class World {
         this.ctx.restore();
     }
 
-
     setStoppableInterval(func, time) {
         let interval = setInterval(func, time);
         this.intervalsIDs.push(interval);
-        console.log(this.intervalsIDs);
     }
 
     stopGame() {
-        this.intervalsIDs.forEach(intervalID => {
+        this.intervalsIDs.forEach((intervalID) => {
             clearInterval(intervalID);
         });
     }
-
 }
