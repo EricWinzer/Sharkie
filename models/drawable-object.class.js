@@ -1,17 +1,12 @@
 class DrawableObjects {
-    ground = 400;
     img;
     x;
     y;
     height;
     width;
+    otherDirection = false;
     imageCache = {};
     currentImage = 0;
-    flipDirection = false;
-
-    isAboveGround() {
-        return this.y < this.ground;
-    }
 
     loadImage(path) {
         this.img = new Image();

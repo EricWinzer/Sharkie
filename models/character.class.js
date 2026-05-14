@@ -1,4 +1,5 @@
 class Character extends MovableObjects {
+    startX = 30;
     x = 30;
     y = 240;
     height = 100;
@@ -153,8 +154,8 @@ class Character extends MovableObjects {
                 //FIXME - this.swimmingSound.play();
             }
 
-            if (keyboard.left == true && this.x > 0) {
-                this.x -= this.speed;
+            if (keyboard.left == true && this.x > this.startX) {
+                this.moveLeft();
                 this.otherDirection = true;
                 //FIXME - this.swimmingSound.play();
             }

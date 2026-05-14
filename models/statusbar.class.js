@@ -1,4 +1,4 @@
-class Statusbar {
+class StatusbarHealth extends DrawableObjects {
     percentage = 100;
 
     imageStatusbarLives = [
@@ -29,6 +29,7 @@ class Statusbar {
     ];
 
     constructor() {
+        super();
         this.loadImages(this.imageStatusbarLives);
         this.loadImages(this.imageStatusbarCoins);
         this.loadImages(this.imageStatusbarPoisoned);

@@ -11,7 +11,6 @@ class Keyboard {
     }
 
     keyDownHandler(e) {
-        console.log(e.keyCode);
         switch (e.keyCode) {
             case 37:
             case 65:

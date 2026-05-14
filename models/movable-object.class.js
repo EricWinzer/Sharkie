@@ -1,4 +1,5 @@
 class MovableObjects extends DrawableObjects {
+    ground = 380;
     x = 30;
     y = 75;
     height = 50;
@@ -6,16 +7,20 @@ class MovableObjects extends DrawableObjects {
     speed = 0.15;
     speedY = 0;
     acceleration = 2.5;
-    otherDirection = false;
+    flipDirection = false;
     energy = 100;
     lastHit = 0;
+
+    isAboveGround() {
+        return this.y >= this.ground;
+    }
 
     draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 
     drawFrame(ctx) {
-        if (this instanceof Character || this instanceof Pufferfish) {
+        if (this instanceof Character || this instanceof Pufferfish || this instanceof Jellyfish || this instanceof Endboss) {
             ctx.beginPath();
             ctx.lineWidth = '4';
             ctx.strokeStyle = 'blue';

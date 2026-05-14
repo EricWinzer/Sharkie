@@ -1,24 +1,31 @@
 class World {
-    character = new Character();
-    level = level1;
-
     canvas;
     ctx;
     keyboard;
     camera_x = 0;
+    character;
+    statusbarHealth;
+    statusbarCoin;
+    statusbarPoison;
+    statusbarEndboss;
+    level;
 
     intervalsIDs = [];
 
-    constructor(canvas, keyboard) {
+    constructor(canvas, keyboard, level = level1) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
         this.keyboard = keyboard;
-        this.draw();
+        this.level = level;
         this.setWorld();
+        /*        this.statusbarHealth = new StatusbarHealth(); */
+        this.draw();
+
         this.checkCollisions();
     }
 
     setWorld() {
+        this.character = new Character();
         this.character.world = this;
     }
 
@@ -44,10 +51,9 @@ class World {
         this.addObjectsToMap(this.level.enemies);
 
         this.ctx.translate(-this.camera_x, 0);
-        /*
-            this.addToMap(this.barrier);
-        */
 
+        /*         this.addObjectsToMap(this.statusbarHealth);
+         */
         let self = this;
         requestAnimationFrame(() => {
             self.draw();
