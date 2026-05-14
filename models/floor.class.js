@@ -1,8 +1,8 @@
-class Floor extends MovableObjects {
-        x = 0;
-        y = 0;
-        height = 150;
-        width = 300;
+class Floor extends MovableObject {
+    x = 0;
+    y = 0;
+    height = 150;
+    width = 300;
 
     constructor() {
         super();

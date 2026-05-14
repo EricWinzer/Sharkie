@@ -79,7 +79,7 @@ class MovableObjects extends DrawableObjects {
 
     animate() {
         setInterval(() => {
-            this.x -= 0.15;
+            this.x -= this.speed;
         }, 1000 / 60);
     }
 

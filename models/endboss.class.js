@@ -55,6 +55,42 @@ class Endboss extends MovableObjects {
         '../assets/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 9.png',
     ];
 
+    imagesIntro = [
+        '../assets/2.Enemy/3 Final Enemy/1.Introduce/1.png',
+        '../assets/2.Enemy/3 Final Enemy/1.Introduce/2.png',
+        '../assets/2.Enemy/3 Final Enemy/1.Introduce/3.png',
+        '../assets/2.Enemy/3 Final Enemy/1.Introduce/4.png',
+        '../assets/2.Enemy/3 Final Enemy/1.Introduce/5.png',
+        '../assets/2.Enemy/3 Final Enemy/1.Introduce/6.png',
+        '../assets/2.Enemy/3 Final Enemy/1.Introduce/7.png',
+        '../assets/2.Enemy/3 Final Enemy/1.Introduce/8.png',
+        '../assets/2.Enemy/3 Final Enemy/1.Introduce/9.png',
+        '../assets/2.Enemy/3 Final Enemy/1.Introduce/10.png',
+    ];
+
+    imagesAttack = [
+        '../assets/2.Enemy/3 Final Enemy/Attack/1.png',
+        '../assets/2.Enemy/3 Final Enemy/Attack/2.png',
+        '../assets/2.Enemy/3 Final Enemy/Attack/3.png',
+        '../assets/2.Enemy/3 Final Enemy/Attack/4.png',
+        '../assets/2.Enemy/3 Final Enemy/Attack/5.png',
+        '../assets/2.Enemy/3 Final Enemy/Attack/6.png',
+    ];
+
+    imagesHurt = [
+        '../assets/2.Enemy/3 Final Enemy/Hurt/1.png',
+        '../assets/2.Enemy/3 Final Enemy/Hurt/2.png',
+        '../assets/2.Enemy/3 Final Enemy/Hurt/3.png',
+        '../assets/2.Enemy/3 Final Enemy/Hurt/4.png',
+    ];
+
+    imagesDead = [
+        '../assets/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 6.png',
+        '../assets/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 7.png',
+        '../assets/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 8.png',
+        '../assets/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 9.png',
+    ];
+
     constructor() {
         super();
         this.loadImage(this.imagesSwim[0]);

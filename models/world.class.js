@@ -36,8 +36,6 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        this.ctx.translate(this.camera_x, 0);
-
         this.addObjectsToMap(this.level.backgroundObjects);
 
         this.addToMap(this.character);
@@ -87,6 +85,7 @@ class World {
     setStoppableInterval(func, time) {
         let interval = setInterval(func, time);
         this.intervalsIDs.push(interval);
+        console.log(this.intervalsIDs);
     }
 
     stopGame() {
