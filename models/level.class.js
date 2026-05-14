@@ -1,7 +1,7 @@
 class Level {
     enemies;
-    backgroundObjects
-    level_end_x = 720;
+    backgroundObjects;
+    level_end_x = 4 * 719;
 
     barrier;
 
@@ -9,5 +9,4 @@ class Level {
         this.enemies = enemies;
         this.backgroundObjects = backgroundObjects;
     }
-
 }

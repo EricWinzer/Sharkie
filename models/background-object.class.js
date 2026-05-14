@@ -1,7 +1,4 @@
-class BackgroundObject extends MovableObjects {
-
-
-    
+class BackgroundObject extends DrawableObjects {
     constructor(imagePath, x, y, width, height) {
         super();
         this.loadImage(imagePath);
@@ -10,6 +7,4 @@ class BackgroundObject extends MovableObjects {
         this.width = width;
         this.height = height;
     }
-
-
 }

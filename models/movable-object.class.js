@@ -1,18 +1,27 @@
-class MovableObjects {
-    ground = 180;
+class MovableObjects extends DrawableObjects {
     x = 30;
     y = 75;
-    img;
     height = 50;
     width = 80;
-    imageCache = {};
     speed = 0.15;
     speedY = 0;
     acceleration = 2.5;
     otherDirection = false;
+    energy = 100;
+    lastHit = 0;
 
-    isAboveGround() {
-        return this.y < ground;
+    draw(ctx) {
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    }
+
+    drawFrame(ctx) {
+        if (this instanceof Character || this instanceof Pufferfish) {
+            ctx.beginPath();
+            ctx.lineWidth = '4';
+            ctx.strokeStyle = 'blue';
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+        }
     }
 
     applyGravity() {
@@ -24,30 +33,48 @@ class MovableObjects {
         }, 1000 / 25);
     }
 
-    currentImage = 0;
-
-    loadImage(path) {
-        this.img = new Image();
-        this.img.src = path;
-    }
-
-    loadImages(arr) {
-        arr.forEach((path) => {
-            let img = new Image();
-            img.src = path;
-            this.imageCache[path] = img;
-
-        });
-    }
-
     moveRight() {
-        console.log('Moving right');
+        this.x += this.speed;
     }
 
     moveLeft() {
-        setInterval(() => {
-            this.x -= this.speed;
-        }, 1000 / 60);
+        this.x -= this.speed;
+    }
+
+    moveUp() {
+        this.y -= this.speed;
+    }
+
+    moveDown() {
+        this.y += this.speed;
+    }
+
+    isColliding(movableObject) {
+        return (
+            this.x + this.width > movableObject.x &&
+            this.y + this.height > movableObject.y &&
+            this.x < movableObject.x &&
+            this.y < movableObject.y + movableObject.height
+        );
+    }
+
+    hit() {
+        this.energy -= 5;
+        if (this.energy < 0) {
+            this.energy = 0;
+        } else {
+            this.lastHit = new Date().getTime();
+        }
+    }
+
+    isDead() {
+        return this.energy == 0;
+    }
+
+    isHurt() {
+        let timepassed = new Date().getTime() - this.lastHit;
+        timepassed = timepassed / 1000;
+        return timepassed < 1;
     }
 
     animate() {
@@ -62,5 +89,4 @@ class MovableObjects {
         this.img = this.imageCache[path];
         this.currentImage++;
     }
-
 }

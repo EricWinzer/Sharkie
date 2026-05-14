@@ -15,10 +15,22 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
+        this.checkCollisions();
     }
 
     setWorld() {
         this.character.world = this;
+    }
+
+    checkCollisions() {
+        setInterval(() => {
+            this.level.enemies.forEach((enemy) => {
+                if (this.character.isColliding(enemy)) {
+                    this.character.hit();
+                    console.log('Collision with Character', enemy);
+                }
+            });
+        }, 1000);
     }
 
     draw() {
@@ -31,18 +43,19 @@ class World {
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
 
-
         this.ctx.translate(-this.camera_x, 0);
         /*
             this.addToMap(this.barrier);
         */
 
         let self = this;
-        requestAnimationFrame(() => { self.draw() });
+        requestAnimationFrame(() => {
+            self.draw();
+        });
     }
 
     addObjectsToMap(movableObjects) {
-        movableObjects.forEach(movableObject => {
+        movableObjects.forEach((movableObject) => {
             this.addToMap(movableObject);
         });
     }
@@ -52,15 +65,11 @@ class World {
             this.flipImage(movableObject);
         }
 
-        this.ctx.drawImage(
-            movableObject.img,
-            movableObject.x, movableObject.y,
-            movableObject.width, movableObject.height);
+        this.ctx.drawImage(movableObject.img, movableObject.x, movableObject.y, movableObject.width, movableObject.height);
 
         if (movableObject.otherDirection) {
             this.flipImageBack(movableObject);
         }
-
     }
 
     flipImage(movableObject) {
@@ -75,15 +84,14 @@ class World {
         this.ctx.restore();
     }
 
-setStoppableInterval(func, time) {
+    setStoppableInterval(func, time) {
         let interval = setInterval(func, time);
         this.intervalsIDs.push(interval);
     }
 
-stopGame() {
-        this.intervalsIDs.forEach(intervalID => {
+    stopGame() {
+        this.intervalsIDs.forEach((intervalID) => {
             clearInterval(intervalID);
         });
     }
-
 }
