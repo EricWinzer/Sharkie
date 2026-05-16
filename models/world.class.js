@@ -20,6 +20,7 @@ class World {
         this.setWorld();
         this.statusbarHealth = new StatusbarHealth();
         this.statusbarCoin = new StatusbarCoin();
+        this.statusbarPoison = new StatusbarPoison();
         this.draw();
 
         this.checkCollisions();
@@ -66,6 +67,7 @@ class World {
 
         this.addToMap(this.statusbarHealth);
         this.addToMap(this.statusbarCoin);
+        this.addToMap(this.statusbarPoison);
 
         let self = this;
         requestAnimationFrame(() => {

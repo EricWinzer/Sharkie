@@ -10,6 +10,8 @@ class MovableObjects extends DrawableObjects {
     flipDirection = false;
     energy = 100;
     lastHit = 0;
+    coins = 0;
+    poison = 0;
 
     isAboveGround() {
         return this.y >= this.ground;

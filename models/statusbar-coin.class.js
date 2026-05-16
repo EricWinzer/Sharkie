@@ -1,8 +1,5 @@
 class StatusbarCoin extends Statusbars {
-    x = 20;
-    y = 60;
-    height = 60;
-    width = 200;
+    x = 240;
 
     percentage = 0;
 

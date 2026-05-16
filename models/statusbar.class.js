@@ -1,4 +1,9 @@
 class Statusbars extends DrawableObjects {
+    y = 0;
+    x;
+    height = 60;
+    width = 200;
+
     percentage = 100;
 
     setPercentage(percentage) {
