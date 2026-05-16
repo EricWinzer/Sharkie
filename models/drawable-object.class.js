@@ -36,4 +36,21 @@ class DrawableObjects {
 
         ctx.restore();
     }
+
+    drawFrame(ctx) {
+        if (this instanceof Character || this instanceof Pufferfish || this instanceof Jellyfish || this instanceof Endboss) {
+            ctx.beginPath();
+            ctx.lineWidth = '4';
+            ctx.strokeStyle = 'blue';
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+        }
+    }
+
+    playAnimation(images) {
+        let i = this.currentImage % images.length;
+        let path = images[i];
+        this.img = this.imageCache[path];
+        this.currentImage++;
+    }
 }

@@ -18,7 +18,8 @@ class World {
         this.keyboard = keyboard;
         this.level = level;
         this.setWorld();
-        /*        this.statusbarHealth = new StatusbarHealth(); */
+        this.statusbarHealth = new StatusbarHealth();
+        this.statusbarCoin = new StatusbarCoin();
         this.draw();
 
         this.checkCollisions();
@@ -37,6 +38,15 @@ class World {
                     console.log('Collision with Character', enemy);
                 }
             });
+
+            this.level.coins = this.level.coins.filter((coin) => {
+                if (this.character.isColliding(coin)) {
+                    this.character.collecting(coin);
+                    this.statusbarCoin.setPercentage(this.character.coins);
+                    return false;
+                }
+                return true;
+            });
         }, 1000);
     }
 
@@ -49,11 +59,14 @@ class World {
 
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.level.coins);
+        this.addObjectsToMap(this.level.poison);
 
         this.ctx.translate(-this.camera_x, 0);
 
-        /*         this.addObjectsToMap(this.statusbarHealth);
-         */
+        this.addToMap(this.statusbarHealth);
+        this.addToMap(this.statusbarCoin);
+
         let self = this;
         requestAnimationFrame(() => {
             self.draw();

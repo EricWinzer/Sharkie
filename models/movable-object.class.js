@@ -19,16 +19,6 @@ class MovableObjects extends DrawableObjects {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 
-    drawFrame(ctx) {
-        if (this instanceof Character || this instanceof Pufferfish || this instanceof Jellyfish || this instanceof Endboss) {
-            ctx.beginPath();
-            ctx.lineWidth = '4';
-            ctx.strokeStyle = 'blue';
-            ctx.rect(this.x, this.y, this.width, this.height);
-            ctx.stroke();
-        }
-    }
-
     applyGravity() {
         setInterval(() => {
             if (this.isAboveGround || this.speedY > 0) {
@@ -63,12 +53,22 @@ class MovableObjects extends DrawableObjects {
         );
     }
 
+    collecting(itemCollected) {
+        if (!itemCollected) return;
+        const ctor = itemCollected.constructor ? itemCollected.constructor.name : null;
+        if (ctor === 'Coin') {
+            this.coins++;
+        } else if (ctor === 'Poison') {
+            this.poison += 10;
+        }
+    }
+
     hit() {
         this.energy -= 5;
         if (this.energy < 0) {
             this.energy = 0;
         } else {
-            this.lastHit = new Date().getTime();
+            this.lastHit = Date.now();
         }
     }
 
@@ -77,7 +77,7 @@ class MovableObjects extends DrawableObjects {
     }
 
     isHurt() {
-        let timepassed = new Date().getTime() - this.lastHit;
+        let timepassed = Date.now() - this.lastHit;
         timepassed = timepassed / 1000;
         return timepassed < 1;
     }
@@ -86,12 +86,5 @@ class MovableObjects extends DrawableObjects {
         setInterval(() => {
             this.x -= 0.15;
         }, 1000 / 60);
-    }
-
-    playAnimation(images) {
-        let i = this.currentImage % images.length;
-        let path = images[i];
-        this.img = this.imageCache[path];
-        this.currentImage++;
     }
 }
